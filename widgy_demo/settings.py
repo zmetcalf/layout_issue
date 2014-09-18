@@ -172,7 +172,9 @@ ADMIN_MENU_ORDER = [
     )),
 ]
 
-URLCONF_INCLUDE_CHOICES = ()
+URLCONF_INCLUDE_CHOICES = (
+    ('blog.urls', 'Blog'),
+)
 
 DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
