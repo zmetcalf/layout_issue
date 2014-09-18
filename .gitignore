@@ -1,0 +1,16 @@
+*.log
+*.pot
+*.pyc
+local_settings.py
+/.c9revisions
+/CACHE
+/django-backupdb
+/django-debug-toolbar
+/django-fusionbox
+/django-widgy
+/media
+/mezzanine
+/static/CACHE
+/static/scss
+
+db.sqlite3

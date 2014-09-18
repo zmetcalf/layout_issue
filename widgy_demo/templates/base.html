@@ -1,0 +1,49 @@
+<!doctype HTML>
+{% load compress %}
+{% load pages_tags %}
+{% load staticfiles %}
+{% load widgy_tags %}
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="{% block seo_description %}{% endblock %}" />
+  <meta name="keywords" content="{% block seo_keywords %}{% endblock %}" />
+  <title>{% block title %}Project name{% endblock %}</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css" />
+  {% compress css %}
+    {% block css %}
+      <style>
+        body {
+          padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        }
+      </style>
+      {% for scss_file in 'WIDGY_MEZZANINE_SITE'|scss_files %}
+      <link rel="stylesheet" href="{% static scss_file %}" type="text/x-scss">
+      {% endfor %}
+      {% endblock %}
+    {% endcompress %}
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    {% compress js %}
+      {% block js %}
+        {% for js_file in 'WIDGY_MEZZANINE_SITE'|js_files %}
+        <script src="{% static js_file %}"></script>
+        {% endfor %}
+      {% endblock %}
+    {% endcompress %}
+</head>
+<body>
+  {% block body %}
+  <div class="left_nav col-md-2">
+      <div class="panel tree">{% page_menu "pages/menus/tree.html" %}</div>
+  </div>
+
+  <div class="container col-md-10">
+    {% block content %}
+      {% block leftnav %}
+      {% endblock %}
+    {% endblock %}
+  </div>
+  {% endblock %}
+</body>
+</html>
